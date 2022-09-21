@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 double sliderValue = 30;
@@ -24,8 +23,8 @@ class _SpeakerControlState extends State<SpeakerControl> {
           children: [
             Container(
               alignment: Alignment.center,
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(8),
               child: SleekCircularSlider(
                 min: 0,
                 max: 100,
@@ -37,9 +36,9 @@ class _SpeakerControlState extends State<SpeakerControl> {
                       shadowWidth: 0,
                       handlerSize: 15),
                   customColors: CustomSliderColors(
-                    progressBarColor: Color.fromARGB(255, 3, 180, 204),
+                    progressBarColor: const Color.fromARGB(255, 3, 180, 204),
                     trackColor: Colors.grey,
-                    dotColor: Color.fromARGB(255, 3, 180, 204),
+                    dotColor: const Color.fromARGB(255, 3, 180, 204),
                   ),
                 ),
                 initialValue: sliderValue,
@@ -52,7 +51,7 @@ class _SpeakerControlState extends State<SpeakerControl> {
                   child: Container(
                     height: 200,
                     width: 200,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       boxShadow: [
                         // BoxShadow(
                         //    color: Colors.black.withOpacity(0.2),
@@ -68,10 +67,10 @@ class _SpeakerControlState extends State<SpeakerControl> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(Icons.volume_up_sharp),
+                        const Icon(Icons.volume_up_sharp),
                         Text(
                           '${sliderValue.toInt()}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                           ),
