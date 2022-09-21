@@ -26,9 +26,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/': (context) => HomePage(),
-        '/acControl': (context) => AcControl(),
-        '/speakerControl': (context) => SpeakerControl(),
+        '/': (context) => const HomePage(),
+        '/acControl': (context) => const AcControl(),
+        '/speakerControl': (context) => const SpeakerControl(),
       },
     );
   }
