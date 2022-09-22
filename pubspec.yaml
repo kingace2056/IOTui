@@ -37,6 +37,9 @@ dependencies:
   icons_plus:
   google_fonts: ^3.0.1
   sleek_circular_slider:
+  animated_text_kit: ^4.2.2
+  marquee: ^2.2.3
+  battery_indicator: ^0.1.1
   
 
 dev_dependencies:

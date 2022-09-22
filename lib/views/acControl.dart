@@ -51,6 +51,7 @@ class _AcControlState extends State<AcControl> {
       appBar: AppBar(
         title: const Text('Smart AC'),
         centerTitle: true,
+        actions: const [Icon(Icons.more_vert_sharp)],
       ),
       body: SingleChildScrollView(
         child: Column(
