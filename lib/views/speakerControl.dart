@@ -1,13 +1,10 @@
 // ignore_for_file: file_names
-
 import 'dart:developer';
-
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:battery_indicator/battery_indicator.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+
+import 'package:iot_ui/constraints/constraints.dart';
 
 double sliderValue = 30;
 double songTime = 20;
@@ -40,6 +37,7 @@ class _SpeakerControlState extends State<SpeakerControl> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Smart Speaker'),
+        // backgroundColor: spkGradEnd,
         centerTitle: true,
         actions: const [Icon(Icons.more_vert_sharp)],
       ),
@@ -52,11 +50,10 @@ class _SpeakerControlState extends State<SpeakerControl> {
                   height: MediaQuery.of(context).size.height * 0.4,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                    colorFilter:
-                        powered ? null : const ColorFilter.linearToSrgbGamma(),
-                    image: const NetworkImage(
-                        'https://www.audicoonline.co.za/image/cache/catalog/B%20and%20O/bang-olufsen-beolab-19-wireless-subwooferbeolab-19-3992-500x500.png'),
-                  ))),
+                          colorFilter: powered
+                              ? null
+                              : const ColorFilter.linearToSrgbGamma(),
+                          image: const AssetImage('assets/images/bof.png')))),
               Positioned(
                 // top: 0,
                 bottom: 30,
@@ -74,7 +71,7 @@ class _SpeakerControlState extends State<SpeakerControl> {
                           ispaused = true;
                         });
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.power_settings_new_sharp,
                         color: Colors.white,
                         size: 50,
@@ -117,8 +114,16 @@ class _SpeakerControlState extends State<SpeakerControl> {
       padding: const EdgeInsets.all(20),
       // height: MediaQuery.of(context).size.height * 0.2,
       decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(20),
+        gradient: LinearGradient(colors: [spkGradStart, spkGradEnd]),
+        borderRadius: BorderRadius.circular(25),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            // blurStyle: BlurStyle.inner,
+            blurRadius: 10,
+            spreadRadius: 3,
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,7 +150,7 @@ class _SpeakerControlState extends State<SpeakerControl> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(
+                      const Text(
                         'Now Playing',
                         style: TextStyle(
                             fontSize: 20,
@@ -155,13 +160,22 @@ class _SpeakerControlState extends State<SpeakerControl> {
                       SizedBox(
                         width: MediaQuery.of(context).size.width / 4.5,
                       ),
-                      SizedBox(
+                      Container(
+                        decoration: const BoxDecoration(boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 30,
+                              spreadRadius: 2)
+                        ]),
                         child: BatteryIndicator(
-                          // showPercentNum: true,
+                          showPercentNum: false,
                           colorful: true,
                           size: 15,
                           showPercentSlide: true,
                           style: BatteryIndicatorStyle.skeumorphism,
+                          batteryLevel: 50,
+                          batteryFromPhone: false,
+                          ratio: 6 / 3,
                         ),
                       ),
                     ],
@@ -172,9 +186,10 @@ class _SpeakerControlState extends State<SpeakerControl> {
                       width: MediaQuery.of(context).size.width * 0.6,
                       child: Marquee(
                         scrollAxis: Axis.horizontal,
-                        text: 'The song from my fav playlist',
+                        velocity: 30,
+                        text: 'Rick Astley - Never Gonna Give You Up',
                         style: const TextStyle(
-                            color: Color.fromARGB(255, 187, 187, 187),
+                            color: Color.fromARGB(255, 220, 220, 220),
                             fontWeight: FontWeight.w600),
                         blankSpace: 30,
                       ),
@@ -185,11 +200,16 @@ class _SpeakerControlState extends State<SpeakerControl> {
             ],
           ),
           SliderTheme(
+            data: SliderTheme.of(context).copyWith(
+                trackHeight: 3,
+                activeTrackColor: Colors.white,
+                thumbShape: SliderComponentShape.noThumb),
             child: Slider(
               value: songTime,
               min: 0,
               max: 100,
               activeColor: Colors.white,
+              inactiveColor: const Color.fromARGB(255, 197, 197, 197),
               onChanged: ((value) {
                 setState(() {
                   songTime = value;
@@ -197,8 +217,6 @@ class _SpeakerControlState extends State<SpeakerControl> {
                 });
               }),
             ),
-            data: SliderTheme.of(context)
-                .copyWith(thumbShape: SliderComponentShape.noThumb),
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -256,9 +274,18 @@ class utilityWidget extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.fromLTRB(15, 0, 15, 0),
           // height: MediaQuery.of(context).size.height * 0.12,
-          padding: EdgeInsets.fromLTRB(8, 20, 8, 20),
+          padding: const EdgeInsets.fromLTRB(8, 20, 8, 20),
           decoration: BoxDecoration(
-              color: Colors.red, borderRadius: BorderRadius.circular(20)),
+              gradient: LinearGradient(colors: [spkGradStart, spkGradEnd]),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  // blurStyle: BlurStyle.inner,
+                  blurRadius: 10,
+                  spreadRadius: 2,
+                ),
+              ],
+              borderRadius: BorderRadius.circular(20)),
           width: MediaQuery.of(context).size.width,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -272,7 +299,7 @@ class utilityWidget extends StatelessWidget {
               Wrap(children: [
                 Text(
                   utilityName,
-                  style: TextStyle(color: Colors.white, fontSize: 15),
+                  style: const TextStyle(color: Colors.white, fontSize: 15),
                 ),
               ])
             ],

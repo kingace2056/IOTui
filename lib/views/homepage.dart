@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:iot_ui/constraints/constraints.dart';
 import 'package:iot_ui/constraints/responsive.dart';
 import 'package:iot_ui/views/acControl.dart';
 import 'package:iot_ui/widgets/DeviceCard.dart';
@@ -145,10 +146,8 @@ class _HomePageState extends State<HomePage> {
                                 deviceName: 'Smart\nSpeaker',
                                 deviceIcon: EvaIcons.speaker,
                                 deviceStatus: false,
-                                gradientEnd:
-                                    const Color.fromARGB(255, 3, 180, 204),
-                                gradientStart:
-                                    const Color.fromARGB(255, 0, 172, 193),
+                                gradientEnd: spkGradStart,
+                                gradientStart: spkGradEnd,
                                 btnActiveColor:
                                     const Color.fromARGB(255, 88, 190, 203),
                                 route: '/speakerControl',
@@ -175,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                                     const Color.fromARGB(255, 1, 220, 92),
                                 btnActiveColor:
                                     const Color.fromARGB(255, 140, 255, 188),
-                                route: '/acControl',
+                                route: '/speakerControl',
                               ),
                               DeviceCard(
                                 deviceName: 'Smart\nTV',
@@ -192,14 +191,14 @@ class _HomePageState extends State<HomePage> {
                               DeviceCard(
                                 deviceName: 'Smart\nTV',
                                 deviceIcon: EvaIcons.tv_outline,
-                                deviceStatus: true,
+                                deviceStatus: false,
                                 gradientEnd:
                                     const Color.fromARGB(255, 0, 200, 83),
                                 gradientStart:
                                     const Color.fromARGB(255, 1, 220, 92),
                                 btnActiveColor:
                                     const Color.fromARGB(255, 140, 255, 188),
-                                route: '/acControl',
+                                route: '/speakerControl',
                               )
                             ],
                           ),
