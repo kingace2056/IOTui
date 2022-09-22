@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iot_ui/views/homepage.dart';
-import 'package:iot_ui/views/speakerControl.dart';
+import 'package:iot_ui/views/sound/equalizer.dart';
+import 'package:iot_ui/views/sound/speakerControl.dart';
 
 import 'views/acControl.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => const HomePage(),
+        // '/': (context) => const Equalizer(),
         '/acControl': (context) => const AcControl(),
         '/speakerControl': (context) => SpeakerControl()
       },

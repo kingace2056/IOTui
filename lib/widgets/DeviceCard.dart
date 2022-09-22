@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DeviceCard extends StatefulWidget {
   String deviceName;
@@ -27,6 +28,28 @@ class DeviceCard extends StatefulWidget {
 }
 
 class _DeviceCardState extends State<DeviceCard> {
+  void saveStates() async {
+    final pref = await SharedPreferences.getInstance();
+
+    await pref.setBool(widget.deviceName, widget.deviceStatus);
+    print(widget.deviceName);
+  }
+
+  void getStates() async {
+    final pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      widget.deviceStatus = pref.getBool(widget.deviceName) as bool;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getStates();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -93,6 +116,7 @@ class _DeviceCardState extends State<DeviceCard> {
                   trackColor: Colors.black,
                   value: widget.deviceStatus,
                   onChanged: (value) {
+                    saveStates();
                     if (widget.deviceStatus == true) {
                       setState(() {
                         widget.deviceStatus = false;

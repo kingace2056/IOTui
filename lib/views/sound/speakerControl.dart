@@ -2,9 +2,11 @@
 import 'dart:developer';
 import 'package:battery_indicator/battery_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:iot_ui/views/sound/equalizer.dart';
 import 'package:marquee/marquee.dart';
 
 import 'package:iot_ui/constraints/constraints.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 double sliderValue = 30;
 double songTime = 20;
@@ -21,9 +23,25 @@ class SpeakerControl extends StatefulWidget {
 }
 
 class _SpeakerControlState extends State<SpeakerControl> {
+  double sliderValue = 0;
+
+  void saveStates() async {
+    final pref = await SharedPreferences.getInstance();
+    await pref.setBool('deviceState', powered);
+  }
+
+  void getStates() async {
+    final pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      powered = pref.getBool('deviceState') as bool;
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
+    getStates();
     super.initState();
   }
 
@@ -66,6 +84,7 @@ class _SpeakerControlState extends State<SpeakerControl> {
                       borderRadius: BorderRadius.circular(70)),
                   child: IconButton(
                       onPressed: () {
+                        saveStates();
                         setState(() {
                           powered ? powered = false : powered = true;
                           ispaused = true;
@@ -270,7 +289,18 @@ class utilityWidget extends StatelessWidget {
     return Flexible(
       flex: 2,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  alignment: Alignment.center,
+                  contentPadding: EdgeInsets.all(4),
+                  backgroundColor: Colors.grey,
+                  content: Equalizer(),
+                );
+              });
+        },
         child: Container(
           margin: const EdgeInsets.fromLTRB(15, 0, 15, 0),
           // height: MediaQuery.of(context).size.height * 0.12,
