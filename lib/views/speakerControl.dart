@@ -71,6 +71,7 @@ class _SpeakerControlState extends State<SpeakerControl> {
                       onPressed: () {
                         setState(() {
                           powered ? powered = false : powered = true;
+                          ispaused = true;
                         });
                       },
                       icon: Icon(
@@ -217,7 +218,7 @@ class _SpeakerControlState extends State<SpeakerControl> {
                     });
                   },
                   icon: Icon(
-                    ispaused ? Icons.pause : Icons.play_arrow_rounded,
+                    ispaused ? Icons.play_arrow_rounded : Icons.pause,
                     color: Colors.white,
                     size: 50,
                   )),

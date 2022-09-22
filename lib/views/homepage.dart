@@ -102,18 +102,32 @@ class _HomePageState extends State<HomePage> {
                             physics: const NeverScrollableScrollPhysics(),
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: Responsive.isMobile(context)
-                                        ? 2
-                                        : Responsive.isMobileLarge(context)
-                                            ? 2
-                                            : Responsive.isTablet(context)
-                                                ? 3
-                                                : Responsive.isDesktop(context)
-                                                    ? 3
-                                                    : 2,
-                                    mainAxisExtent:
-                                        MediaQuery.of(context).size.height *
-                                            0.3),
+                              crossAxisCount: Responsive.isMobile(context)
+                                  ? 2
+                                  : Responsive.isMobileLarge(context)
+                                      ? 2
+                                      : Responsive.isTablet(context)
+                                          ? 3
+                                          : Responsive.isDesktop(context)
+                                              ? 3
+                                              : 2,
+                              mainAxisExtent: Responsive.isMobile(context)
+                                  ? MediaQuery.of(context).size.height * 0.3
+                                  : Responsive.isMobileLarge(context)
+                                      ? MediaQuery.of(context).size.height * 0.3
+                                      : Responsive.isTablet(context)
+                                          ? MediaQuery.of(context).size.height *
+                                              0.6
+                                          : Responsive.isDesktop(context)
+                                              ? MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.6
+                                              : MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.3,
+                            ),
                             children: [
                               DeviceCard(
                                 deviceName: 'Smart\nSpotlight',
