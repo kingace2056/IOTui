@@ -22,7 +22,6 @@ class DeviceCard extends StatefulWidget {
       required this.btnActiveColor,
       required this.route})
       : super(key: key);
-
   @override
   State<DeviceCard> createState() => _DeviceCardState();
 }
@@ -32,7 +31,8 @@ class _DeviceCardState extends State<DeviceCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, widget.route);
+        Navigator.pushNamed(context, widget.route,
+            arguments: widget.deviceStatus);
       },
       child: Container(
         padding: const EdgeInsets.all(10),

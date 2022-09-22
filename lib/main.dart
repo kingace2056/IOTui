@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomePage(),
         '/acControl': (context) => const AcControl(),
-        '/speakerControl': (context) => const SpeakerControl(),
+        '/speakerControl': (context) => SpeakerControl()
       },
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:iot_ui/constraints/responsive.dart';
 import 'package:iot_ui/views/acControl.dart';
 import 'package:iot_ui/widgets/DeviceCard.dart';
 
@@ -101,7 +102,15 @@ class _HomePageState extends State<HomePage> {
                             physics: const NeverScrollableScrollPhysics(),
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
+                                    crossAxisCount: Responsive.isMobile(context)
+                                        ? 2
+                                        : Responsive.isMobileLarge(context)
+                                            ? 2
+                                            : Responsive.isTablet(context)
+                                                ? 3
+                                                : Responsive.isDesktop(context)
+                                                    ? 3
+                                                    : 2,
                                     mainAxisExtent:
                                         MediaQuery.of(context).size.height *
                                             0.3),

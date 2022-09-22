@@ -12,9 +12,12 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 double sliderValue = 30;
 double songTime = 20;
 bool ispaused = false;
+bool powered = true;
 
 class SpeakerControl extends StatefulWidget {
-  const SpeakerControl({Key? key}) : super(key: key);
+  const SpeakerControl({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<SpeakerControl> createState() => _SpeakerControlState();
@@ -22,7 +25,18 @@ class SpeakerControl extends StatefulWidget {
 
 class _SpeakerControlState extends State<SpeakerControl> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    bool devStatus =
+        (ModalRoute.of(context)?.settings.arguments ?? bool) as bool;
+    // powered = devStatus;
+    log('${devStatus}this is dev statys ');
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Smart Speaker'),
@@ -33,15 +47,40 @@ class _SpeakerControlState extends State<SpeakerControl> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Flexible(
-              child: Container(
+            Stack(children: [
+              Container(
                   height: MediaQuery.of(context).size.height * 0.4,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                       image: DecorationImage(
-                    image: NetworkImage(
+                    colorFilter:
+                        powered ? null : const ColorFilter.linearToSrgbGamma(),
+                    image: const NetworkImage(
                         'https://www.audicoonline.co.za/image/cache/catalog/B%20and%20O/bang-olufsen-beolab-19-wireless-subwooferbeolab-19-3992-500x500.png'),
                   ))),
-            ),
+              Positioned(
+                // top: 0,
+                bottom: 30,
+                right: MediaQuery.of(context).size.width / 7,
+                child: Container(
+                  height: 70,
+                  width: 70,
+                  decoration: BoxDecoration(
+                      color: powered ? Colors.green : Colors.red[800],
+                      borderRadius: BorderRadius.circular(70)),
+                  child: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          powered ? powered = false : powered = true;
+                        });
+                      },
+                      icon: Icon(
+                        Icons.power_settings_new_sharp,
+                        color: Colors.white,
+                        size: 50,
+                      )),
+                ),
+              )
+            ]),
             Flexible(
               child: Row(
                 children: [
