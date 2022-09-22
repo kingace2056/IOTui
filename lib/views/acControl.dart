@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 bool switchValue = true;
@@ -37,11 +38,24 @@ class AcControl extends StatefulWidget {
 }
 
 class _AcControlState extends State<AcControl> {
+  void saveStates() async {
+    final pref = await SharedPreferences.getInstance();
+    await pref.setBool('Smart\nAC', switchValue);
+  }
+
+  void getStates() async {
+    final pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      switchValue = pref.getBool('Smart\nAC') == null
+          ? false
+          : pref.getBool('Smart\nAC') as bool;
+    });
+  }
+
   @override
   void initState() {
-    switchValue = true;
-    speed = 1;
-
+    getStates();
     super.initState();
   }
 
@@ -258,6 +272,7 @@ class _AcControlState extends State<AcControl> {
                                         value: switchValue,
                                         activeColor: Colors.white,
                                         onChanged: (value) {
+                                          saveStates();
                                           setState(() {
                                             if (switchValue == true) {
                                               setState(() {

@@ -131,15 +131,15 @@ class _HomePageState extends State<HomePage> {
                             ),
                             children: [
                               DeviceCard(
-                                deviceName: 'Smart\nSpotlight',
-                                deviceIcon: Icons.light,
+                                deviceName: 'Smart\nAC',
+                                deviceIcon: Icons.ac_unit_rounded,
                                 deviceStatus: true,
                                 gradientEnd:
-                                    const Color.fromARGB(255, 243, 83, 90),
+                                    const Color.fromARGB(255, 128, 85, 250),
                                 gradientStart:
-                                    const Color.fromARGB(255, 243, 82, 82),
+                                    const Color.fromARGB(255, 128, 85, 250),
                                 btnActiveColor:
-                                    const Color.fromARGB(255, 254, 136, 136),
+                                    const Color.fromARGB(255, 177, 148, 255),
                                 route: '/acControl',
                               ),
                               DeviceCard(
@@ -153,15 +153,15 @@ class _HomePageState extends State<HomePage> {
                                 route: '/speakerControl',
                               ),
                               DeviceCard(
-                                deviceName: 'Smart\nAC',
-                                deviceIcon: Icons.ac_unit_rounded,
+                                deviceName: 'Smart\nSpotlight',
+                                deviceIcon: Icons.light,
                                 deviceStatus: true,
                                 gradientEnd:
-                                    const Color.fromARGB(255, 128, 85, 250),
+                                    const Color.fromARGB(255, 243, 83, 90),
                                 gradientStart:
-                                    const Color.fromARGB(255, 128, 85, 250),
+                                    const Color.fromARGB(255, 243, 82, 82),
                                 btnActiveColor:
-                                    const Color.fromARGB(255, 177, 148, 255),
+                                    const Color.fromARGB(255, 254, 136, 136),
                                 route: '/acControl',
                               ),
                               DeviceCard(

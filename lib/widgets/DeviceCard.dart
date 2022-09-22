@@ -39,7 +39,9 @@ class _DeviceCardState extends State<DeviceCard> {
     final pref = await SharedPreferences.getInstance();
 
     setState(() {
-      widget.deviceStatus = pref.getBool(widget.deviceName) as bool;
+      widget.deviceStatus = pref.getBool(widget.deviceName) == null
+          ? false
+          : pref.getBool(widget.deviceName) as bool;
     });
   }
 

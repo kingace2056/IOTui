@@ -27,14 +27,16 @@ class _SpeakerControlState extends State<SpeakerControl> {
 
   void saveStates() async {
     final pref = await SharedPreferences.getInstance();
-    await pref.setBool('deviceState', powered);
+    await pref.setBool('Smart\nSpeaker', powered);
   }
 
   void getStates() async {
     final pref = await SharedPreferences.getInstance();
 
     setState(() {
-      powered = pref.getBool('deviceState') as bool;
+      powered = pref.getBool('Smart\nSpeaker') == null
+          ? false
+          : pref.getBool('Smart\nSpeaker') as bool;
     });
   }
 
