@@ -54,6 +54,7 @@ class _AcControlState extends State<AcControl> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -69,195 +70,213 @@ class _AcControlState extends State<AcControl> {
               ),
             ),
             sliderWidget(),
+
             const SizedBox(
               height: 30,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: activeColor),
-                    child: Column(
+            // this is speed widget
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Speed',
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(5, 8, 5, 8),
-                      child: Row(
-                          mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                    Flexible(
+                      flex: 2,
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: activeColor),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            InkWell(
-                                child: Container(
-                                    alignment: Alignment.center,
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.white
-                                                .withOpacity(0.3),
-                                            offset: const Offset(0, 1),
-                                            blurRadius: 10,
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(20),
-                                        color: speed == 1
-                                            ? Colors.white
-                                            : activeColor),
-                                    child: Text(
-                                      '1',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: speed == 1
-                                              ? Colors.black
-                                              : Colors.white),
-                                    )),
-                                onTap: () {
-                                  setState(() {
-                                    speed = 1;
-                                  });
-                                }),
-                            InkWell(
-                                child: Container(
-                                    alignment: Alignment.center,
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.white
-                                                .withOpacity(0.3),
-                                            offset: const Offset(0, 1),
-                                            blurRadius: 10,
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(20),
-                                        color: speed == 2
-                                            ? Colors.white
-                                            : activeColor),
-                                    child: Text(
-                                      '2',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: speed == 2
-                                              ? Colors.black
-                                              : Colors.white),
-                                    )),
-                                onTap: () {
-                                  setState(() {
-                                    speed = 2;
-                                  });
-                                }),
-                            InkWell(
-                                child: Container(
-                                    alignment: Alignment.center,
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.white
-                                                .withOpacity(0.3),
-                                            offset: const Offset(0, 1),
-                                            blurRadius: 10,
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(20),
-                                        color: speed == 3
-                                            ? Colors.white
-                                            : activeColor),
-                                    child: Text(
-                                      '3',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: speed == 3
-                                              ? Colors.black
-                                              : Colors.white),
-                                      textAlign: TextAlign.center,
-                                    )),
-                                onTap: () {
-                                  setState(() {
-                                    speed = 3;
-                                  });
-                                }),
-                          ]),
-                    )
-                  ],
+                            const Text(
+                              'Speed',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(5, 8, 5, 8),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                        child: Container(
+                                            alignment: Alignment.center,
+                                            height: 40,
+                                            width: 40,
+                                            decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.white
+                                                        .withOpacity(0.3),
+                                                    offset: const Offset(0, 1),
+                                                    blurRadius: 10,
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                color: speed == 1
+                                                    ? Colors.white
+                                                    : activeColor),
+                                            child: Text(
+                                              '1',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: speed == 1
+                                                      ? Colors.black
+                                                      : Colors.white),
+                                            )),
+                                        onTap: () {
+                                          setState(() {
+                                            speed = 1;
+                                          });
+                                        }),
+                                    InkWell(
+                                        child: Container(
+                                            alignment: Alignment.center,
+                                            height: 40,
+                                            width: 40,
+                                            decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.white
+                                                        .withOpacity(0.3),
+                                                    offset: const Offset(0, 1),
+                                                    blurRadius: 10,
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                color: speed == 2
+                                                    ? Colors.white
+                                                    : activeColor),
+                                            child: Text(
+                                              '2',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: speed == 2
+                                                      ? Colors.black
+                                                      : Colors.white),
+                                            )),
+                                        onTap: () {
+                                          setState(() {
+                                            speed = 2;
+                                          });
+                                        }),
+                                    InkWell(
+                                        child: Container(
+                                            alignment: Alignment.center,
+                                            height: 40,
+                                            width: 40,
+                                            decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.white
+                                                        .withOpacity(0.3),
+                                                    offset: const Offset(0, 1),
+                                                    blurRadius: 10,
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                color: speed == 3
+                                                    ? Colors.white
+                                                    : activeColor),
+                                            child: Text(
+                                              '3',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: speed == 3
+                                                      ? Colors.black
+                                                      : Colors.white),
+                                              textAlign: TextAlign.center,
+                                            )),
+                                        onTap: () {
+                                          setState(() {
+                                            speed = 3;
+                                          });
+                                        }),
+                                  ]),
+                            )
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: activeColor),
-                    child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Power',
-                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    const SizedBox(
+                      width: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(5, 8, 5, 8),
-                      child: Row(
-                          mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                    Flexible(
+                      flex: 2,
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: activeColor),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            RichText(
-                                text: const TextSpan(children: [
-                              TextSpan(
-                                  text: 'ON',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 15)),
-                              TextSpan(
-                                  text: '/',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 15)),
-                              TextSpan(
-                                  text: 'OFF',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 15)),
-                            ])),
-                            CupertinoSwitch(
-                                value: switchValue,
-                                activeColor: Colors.white,
-                                onChanged: (value) {
-                                  setState(() {
-                                    if (switchValue == true) {
-                                      setState(() {
-                                        switchValue = false;
-                                      });
-                                    } else {
-                                      setState(() {
-                                        switchValue = true;
-                                      });
-                                    }
-                                  });
-                                })
-                          ]),
+                            const Text(
+                              'Power',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(5, 8, 5, 8),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    RichText(
+                                        text: const TextSpan(children: [
+                                      TextSpan(
+                                          text: 'ON',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15)),
+                                      TextSpan(
+                                          text: '/',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15)),
+                                      TextSpan(
+                                          text: 'OFF',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15)),
+                                    ])),
+                                    CupertinoSwitch(
+                                        value: switchValue,
+                                        activeColor: Colors.white,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            if (switchValue == true) {
+                                              setState(() {
+                                                switchValue = false;
+                                              });
+                                            } else {
+                                              setState(() {
+                                                switchValue = true;
+                                              });
+                                            }
+                                          });
+                                        })
+                                  ]),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
             Padding(
@@ -267,32 +286,32 @@ class _AcControlState extends State<AcControl> {
                 height: 100,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: activeColor),
+                    borderRadius: BorderRadius.circular(20),
+                    color: activeColor),
                 child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Temp',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                Slider(
-                    min: 16,
-                    max: 31,
-                    thumbColor: Colors.white,
-                    activeColor: Colors.white,
-                    inactiveColor: activeColor,
-                    value: sliderValue,
-                    onChanged: (value) {
-                      sliderValue = value;
-                      log('onChange: $sliderValue');
-                      log('${sliderValue ~/ 2 - 8}');
-                      setState(() {
-                        activeColor = _bodyColors[sliderValue ~/ 3 - 5];
-                      });
-                    })
-              ],
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Temp',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    Slider(
+                        min: 16,
+                        max: 31,
+                        thumbColor: Colors.white,
+                        activeColor: Colors.white,
+                        inactiveColor: activeColor,
+                        value: sliderValue,
+                        onChanged: (value) {
+                          sliderValue = value;
+                          log('onChange: $sliderValue');
+                          log('${sliderValue ~/ 2 - 8}');
+                          setState(() {
+                            activeColor = _bodyColors[sliderValue ~/ 3 - 5];
+                          });
+                        })
+                  ],
                 ),
               ),
             )
