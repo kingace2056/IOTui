@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iot_ui/views/homepage.dart';
 import 'package:iot_ui/views/speakerControl.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,

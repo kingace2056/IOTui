@@ -14,89 +14,89 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Color.fromARGB(144, 255, 182, 236),
-                  Color.fromARGB(255, 235, 244, 245),
-                ], begin: Alignment.centerLeft, end: Alignment.centerRight),
-              ),
-              padding: const EdgeInsets.all(8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: const [
-                        Text(
-                          'Hi,Sarthak',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 35,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundImage: NetworkImage(
-                              'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'),
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    margin: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    'A total of 3 devices',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w200,
-                                        fontSize: 20),
-                                  ),
-                                  Text(
-                                    'Living Room',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                              const Icon(Icons.menu),
-                            ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                    Color.fromARGB(144, 255, 182, 236),
+                    Color.fromARGB(255, 235, 244, 245),
+                  ], begin: Alignment.centerLeft, end: Alignment.centerRight),
+                ),
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: const [
+                          Text(
+                            'Hi,Sarthak',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 35,
+                                fontWeight: FontWeight.bold),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 40,
-                        ),
-                        Expanded(
-                          child: GridView(
+                          CircleAvatar(
+                            radius: 30,
+                            backgroundImage: NetworkImage(
+                                'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'),
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      'A total of 3 devices',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w200,
+                                          fontSize: 20),
+                                    ),
+                                    Text(
+                                      'Living Room',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                                const Icon(Icons.menu),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          GridView(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             gridDelegate:
@@ -180,14 +180,14 @@ class _HomePageState extends State<HomePage> {
                               )
                             ],
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
